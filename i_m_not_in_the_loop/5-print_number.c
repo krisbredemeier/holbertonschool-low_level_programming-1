@@ -1,20 +1,21 @@
 #include "my_functions.h"
 #define MAX_LENGTH 100
 
+
+/*
+print_number takes an int, and first passes it to check_number                                           
+to determine if it is 0, a negative number, or the minimum. print_number then                            
+loops through the int dividing it by 10 until it equals 0, and                                           
+indexes it's iterations. This determines how many digits the                                             
+original int is. It then loops through each digit, uses the modulus                                      
+to determine what that digit is, and fills a char array with the ASCII                                   
+char number equivalent to that int. Finally it gives the array to                                        
+the function give_char which prints out each array index.   
+ */
+
 int check_number(int num);
 void give_char(char str[], int len);
 
-"""
-print_number takes an int, and first passes it to check_number               
-to determine if it is 0 or a negative number. print_number then              
-loops through the int dividing it by 10 until it equals 0, and               
-indexes it's iterations. This determines how many digits the                 
-original int is. It then loops through each digit, uses the modulus          
-to determine what that digit is, and fills a char array with the ASCII       
-char number equivalent to that int. Finally it gives the array to            
-the function give_char which prints out each array index. 
-
-""" 
 void print_number(int num) {
   if ((num = check_number(num))) {
     char str[MAX_LENGTH];
@@ -41,7 +42,11 @@ void give_char(char str[], int len) {
 }
 
 int check_number(int num) {
-  if (num < 0){
+  if (num == -2147483648) {
+    give_char("-2147483648", 12);
+    return 0;
+  }
+  else if (num < 0){
     num *= -1;
     print_char('-');
     return num;
