@@ -1,6 +1,9 @@
 #include <stdio.h>
 #define NUMBER 612852475143
 
+/* TAKES A SET NUMBER ^, DETERMINES IT'S LARGEST
+ * PRIME FACTOR, AND THEN PRINTS IT.
+ */
 int main(void) {
   long n = NUMBER;
   long divideBy = 2;

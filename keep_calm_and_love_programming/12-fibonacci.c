@@ -1,27 +1,30 @@
 #include <stdio.h>
+#define AMOUNT 97
 
-#define AMOUNT 98
-
-signed long expon(int i) {
-  signed long n = 1;
+/* PRINT THE FIRST 98 TERMS OF FIBONACCI SEQUENCE
+ * BEGINING WITH 1, AND 2. BREAKS OVERFLOWN LONG INTS
+ * INTO TWO PIECES WHEN NECESSARY.
+ */
+long expon(int i) {
+  long n = 1;
   while (i-- > 1) {
     n = n * 10;
   }
   return n;
 }
 
+void print_term(long x2, long y1, long y2) {
+  if (y2 || x2) {
+    printf("\n%ld%ld", y1, y2);
+  } else {
+    printf("\n%ld", y1);
+  }
+}
+
 int main(void) {
-  signed long x1 = 1;
-  signed long y1 = 1;
-  signed long x2 = 0;
-  signed long y2 = 0;
-  signed long z1;
-  signed long z2;
-  int i = 1;
-  int ndx = AMOUNT;
-
+  signed long x1 = 1, y1 = 1, x2 = 0, y2 = 0, z1, z2;
+  int i = 1, ndx = AMOUNT;
   printf("%ld", y1);
-
   while (ndx--) {
     /* check if overflow will occur on _1 */
     if ((x1 + y1) < 0) {
@@ -47,11 +50,7 @@ int main(void) {
     x1 = z1;
     x2 = z2;
     /* print depending on use of algorithm or not */
-    if (y2 || x2) {
-      printf("\n%ld%ld", y1, y2);
-    } else {
-      printf("\n%ld", y1);
-    }
+    print_term(x2, y1, y2);
   }
   printf("\n");
   return 0;

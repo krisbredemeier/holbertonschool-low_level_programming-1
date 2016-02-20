@@ -1,7 +1,9 @@
 #include <stdio.h>
-
 #define LIMIT 4000000
 
+/* PRINTS THE SUM OF ALL OF THE EVEN TERMS WITHIN
+ * THE FIBONACCI SEQUENCE UNTIL THE SET LIMIT.
+ */
 int main(void) {
   unsigned long x = 1;
   unsigned long y = 1;

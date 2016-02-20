@@ -1,7 +1,9 @@
 #include <stdio.h>
-
 #define AMOUNT 50
 
+/* PRINTS THE FIRST 50 TERMS OF THE FIBONACCI
+ * SEQUENCE, BEGINNING AT 1.
+ */
 int main(void) {
   unsigned long x = 1;
   unsigned long y = 1;
