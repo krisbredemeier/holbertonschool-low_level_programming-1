@@ -1,21 +1,19 @@
 #include <stdio.h>
-/*#define NUMBER 612852475143*/
-#define NUMBER 1231952
+#define NUMBER 612852475143
 
 int main(void) {
   long n = NUMBER;
-  long div=2, ans = 0, maxFact;
+  long divideBy = 2;
+  long largest;
   while(n) {
-    if(n % div)
-      div++;
+    if(n % divideBy)
+      divideBy++;
     else {
-      maxFact = n;
-      n /= div;
-
+      largest = n;
+      n /= divideBy;
       if(n == 1){
-	printf("%ld\n",maxFact);
-	ans = 1;
-	break;
+	printf("%ld\n", largest);
+        n = 0;
       }
     }
   }
