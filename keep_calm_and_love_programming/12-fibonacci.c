@@ -15,9 +15,9 @@ long expon(int i) {
 
 void print_term(long x2, long y1, long y2) {
   if (y2 || x2) {
-    printf("\n%ld%ld", y1, y2);
+    printf(", %ld%ld", y1, y2);
   } else {
-    printf("\n%ld", y1);
+    printf(", %ld", y1);
   }
 }
 
