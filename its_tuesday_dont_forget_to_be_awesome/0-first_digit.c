@@ -1,5 +1,8 @@
 #include <limits.h>
 
+/* first_digit takes an int and divides it
+ * down until there is only one remaining number, then returns that.
+ */
 int first_digit(int n) {
   int i;
   i = n;
