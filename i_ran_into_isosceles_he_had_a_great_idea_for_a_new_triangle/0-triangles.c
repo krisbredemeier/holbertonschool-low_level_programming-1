@@ -12,7 +12,6 @@ void triangles_in_the_term(int len, int amt) {
     while(i-- > 0) {
       print_spaces(i);
       print_body(i2);
-      print_spaces(i);
       printf("\n");
       i2+=2;
     }
