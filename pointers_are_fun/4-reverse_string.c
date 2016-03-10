@@ -11,9 +11,9 @@ void reverse_string(char *s) {
     size++;
   }
   
-  size--;
+  size-=1;
 
-  for (ndx = 0; ndx < (size / 2); ndx++) {
+  for (ndx = 0; ndx <= (size / 2); ndx++) {
     temp = *(s + ndx);
     *(s + ndx) = *(s + (size - ndx));
     *(s + (size - ndx)) = temp;
