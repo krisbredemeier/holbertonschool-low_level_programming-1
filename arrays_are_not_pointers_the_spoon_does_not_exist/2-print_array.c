@@ -8,12 +8,12 @@ void print_array(int *a, int n) {
   for (i = 0; i < n; i++) {
     print_number(a[i]);
     if (i == (n-1)) {
-      print_char('\n');
-      return;
+      break;
     }
     print_char(',');
     print_char(' ');
   }
+  print_char('\n');
 }
 
 void print_number(int n) {
