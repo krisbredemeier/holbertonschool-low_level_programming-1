@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+/* takes an array of ints and prints it in retrograde */
 void reverse_array(int *a, int n) {
   int ndx, temp;
     

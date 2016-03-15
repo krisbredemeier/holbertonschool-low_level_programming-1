@@ -1,3 +1,4 @@
+/* imitates string.h lbrary's strcpy */
 char *string_copy(char *dest, const char *src) {
   int i;
 
