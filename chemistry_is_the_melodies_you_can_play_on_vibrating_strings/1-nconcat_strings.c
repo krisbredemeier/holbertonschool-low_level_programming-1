@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /* concatenate two strings by n bytes */
 char *nconcat_strings(char *dest, const char *src, int n) {
   int i;

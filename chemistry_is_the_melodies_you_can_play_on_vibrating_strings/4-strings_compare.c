@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /* imitates strcmp function */
 int strings_compare(char *s1, const char *s2) {
 
