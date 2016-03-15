@@ -1,36 +1,12 @@
 #include <stdio.h>
-char *string_ncopy(char *dest, const char *src, int n);
+int strings_compare(char *s1, const char *s2);
 
 int main(void)
 {
-  char s1[98];
-  char *p;
-  int i;
-
-  for (i = 0; i < 98 - 1; i++)
-    {
-      s1[i] = '*';
-    }
-  s1[i] = '\0';
-  printf("%s\n", s1);
-  p = string_ncopy(s1, "First, solve the problem. Then, write the code\n", 5);
-  printf("%s\n", s1);
-  printf("%s\n", p);
-  p = string_ncopy(s1, "First, solve the problem. Then, write the code\n", 90);
-  printf("%s", s1);
-  printf("%s", p);
-  for (i = 0; i < 98; i++)
-    {
-      if (i % 10)
-        {
-          printf(" ");
-        }
-      if (!(i % 10) && i)
-        {
-          printf("\n");
-        }
-      printf("0x%02x", s1[i]);
-    }
-  printf("\n");
+  char s1[] = "Hello";
+  char s2[] = "Hello";
+  printf("%d\n", strings_compare(s1, s2));
+  printf("%d\n", strings_compare(s2, s1));
+  printf("%d\n", strings_compare(s1, s1));
   return (0);
 }
