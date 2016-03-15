@@ -1,21 +1,12 @@
-#include <stdio.h>
-char *nconcat_strings(char *dest, const char *src, int n);
+void reverse_array(int *a, int n);
+void print_array(int *a, int n);
 
 int main(void)
 {
-  char s1[98] = "Hello ";
-  char s2[] = "World!\n";
-  char *p;
+int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 98, 1024, 1337};
 
-  printf("%s\n", s1);
-  printf("%s", s2);
-  p = nconcat_strings(s1, s2, 1);
-  printf("%s\n", s1);
-  printf("%s", s2);
-  printf("%s\n", p);
-  p = nconcat_strings(s1, s2, 1024);
-  printf("%s", s1);
-  printf("%s", s2);
-  printf("%s", p);
-  return (0);
+print_array(a, sizeof(a) / sizeof(int));
+reverse_array(a, sizeof(a) / sizeof(int));
+print_array(a, sizeof(a) / sizeof(int));
+return (0);
 }
