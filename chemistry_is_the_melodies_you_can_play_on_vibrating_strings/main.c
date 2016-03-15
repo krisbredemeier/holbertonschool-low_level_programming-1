@@ -1,12 +1,36 @@
-void reverse_array(int *a, int n);
-void print_array(int *a, int n);
+#include <stdio.h>
+char *string_ncopy(char *dest, const char *src, int n);
 
 int main(void)
 {
-int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 98, 1024, 1337};
+  char s1[98];
+  char *p;
+  int i;
 
-print_array(a, sizeof(a) / sizeof(int));
-reverse_array(a, sizeof(a) / sizeof(int));
-print_array(a, sizeof(a) / sizeof(int));
-return (0);
+  for (i = 0; i < 98 - 1; i++)
+    {
+      s1[i] = '*';
+    }
+  s1[i] = '\0';
+  printf("%s\n", s1);
+  p = string_ncopy(s1, "First, solve the problem. Then, write the code\n", 5);
+  printf("%s\n", s1);
+  printf("%s\n", p);
+  p = string_ncopy(s1, "First, solve the problem. Then, write the code\n", 90);
+  printf("%s", s1);
+  printf("%s", p);
+  for (i = 0; i < 98; i++)
+    {
+      if (i % 10)
+        {
+          printf(" ");
+        }
+      if (!(i % 10) && i)
+        {
+          printf("\n");
+        }
+      printf("0x%02x", s1[i]);
+    }
+  printf("\n");
+  return (0);
 }
