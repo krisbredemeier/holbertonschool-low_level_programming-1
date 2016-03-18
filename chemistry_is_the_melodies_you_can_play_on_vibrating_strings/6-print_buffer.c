@@ -65,10 +65,7 @@ void print_buffer(char *b, int size) {
 
 
 void print_mod_string(char *c,int size) {
-  if (size < 10) {
-    size--;
-  }
-  while (size--) {
+   while (size--) {
     if (*c > 31 && *c < 127) {
       print_char(*c);
     }
