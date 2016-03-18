@@ -1,25 +1,21 @@
-#include <stdio.h>
-
-/*void print_string(char *str);*/
 void ripple(char*);
 void increment_memory(char*);
 void print_buffer(char*, int);
 void convert_to_hex(char*, int);
 void print_mod_string(char*, int);
-
-int main(void) {
-  char str[] = "This is a string!\0And this is the rest of the #buffer :)\1\2\3\4\5\6\7#cisfun\n\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\x20\x21\x34\x56#pointersarefun #infernumisfun\n";
-  
-    
-  print_buffer(str, sizeof(str));
-  return 0;
-}
+int print_char(char c);
 
 void convert_to_hex(char *b, int size) {
   char *c; 
   char res[] = "00";
+  int s;
+
   c = b;
-  
+  s = 0;
+  if (size < 10) {
+    s = 10 - size;
+  }
+
   while (size-- > 0) {
     res[0] = *c / 16 + '0';
     res[1] = *c % 16 + '0';
@@ -29,20 +25,25 @@ void convert_to_hex(char *b, int size) {
     if (res[1] > '9') {
       res[1] += 39;
     }
-    printf("%s", res);
+    print_char(res[0]);
+    print_char(res[1]);
     if (size % 2 == 0) {
-      printf("%c", ' ');
+      print_char(' ');
     }
     c++;
   }
+  while (s-- > 0) {
+    print_char(' ');
+    print_char(' ');
+    if (s % 2 == 0) {
+      print_char(' ');
+    }
+  }  
 }
 
 void print_buffer(char *b, int size) {
-  /*char line[47];*/
   char memory[] = "00000000: ";
-  int s;
-
-  printf("%s\n", b);
+  int s, i;
   
   while (size > 0) {
     if ((size - 10) >= 0) {
@@ -51,7 +52,9 @@ void print_buffer(char *b, int size) {
     else {
       s = size;
     }
-    printf("\n%s", memory);
+    for (i = 0; memory[i]; i++) {
+      print_char(memory[i]);  
+    }
     convert_to_hex(b, s);
     print_mod_string(b, s);
     increment_memory(memory);
@@ -60,17 +63,21 @@ void print_buffer(char *b, int size) {
   }
 }
 
+
 void print_mod_string(char *c,int size) {
+  if (size < 10) {
+    size--;
+  }
   while (size--) {
     if (*c > 31 && *c < 127) {
-      printf("%c", *c);
+      print_char(*c);
     }
     else {
-      printf("%c", '.');
+      print_char('.');
     }
     c++;
   }
-  printf('\n');
+  print_char('\n');
 }
 
 void increment_memory(char *c) {
@@ -107,15 +114,3 @@ void ripple(char *c) {
   }
 }
 
-
-
-
-
-/*int print_char(char c);
-
-void print_string(char *str) {
-  while (*str) {
-    print_char(*str++);
-  }
-}
-*/
