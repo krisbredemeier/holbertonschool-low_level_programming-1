@@ -8,10 +8,11 @@ int print_char(char c);
 void convert_to_hex(char *b, int size) {
   char *c; 
   char res[] = "00";
-  int s;
+  int s,d;
 
   c = b;
   s = 0;
+  d = 0;
   if (size < 10) {
     s = 10 - size;
   }
@@ -27,16 +28,20 @@ void convert_to_hex(char *b, int size) {
     }
     print_char(res[0]);
     print_char(res[1]);
-    if (size % 2 == 0) {
+    d++;
+    if (d % 2 == 0) {
       print_char(' ');
+      d = 0;
     }
     c++;
   }
   while (s-- > 0) {
     print_char(' ');
     print_char(' ');
-    if (s % 2 == 0) {
+    d++;
+    if (d % 2 == 0) {
       print_char(' ');
+      d = 0;
     }
   }  
 }
