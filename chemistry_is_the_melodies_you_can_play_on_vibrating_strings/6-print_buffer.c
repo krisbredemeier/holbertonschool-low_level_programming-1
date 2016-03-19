@@ -5,6 +5,11 @@ void convert_to_hex(char*, int);
 void print_mod_string(char*, int);
 int print_char(char c);
 
+/* this function takes a string of chars and
+displays a buffer listing the relative memory
+location (in hex), the hex ascii code for each
+char, and then displays the actual printable
+chars in sets of 10 per line. */
 void convert_to_hex(char *b, int size) {
   char *c; 
   char res[] = "00";
