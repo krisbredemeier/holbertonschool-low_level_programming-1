@@ -1,3 +1,4 @@
+/* convert chars in a string to all uppercase */
 char *uppercase_string(char *c) {
   int i;
 

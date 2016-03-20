@@ -1,3 +1,4 @@
+/* replace specific letters in a string to numbers */
 char *leet(char *c) {
   int i;
 
