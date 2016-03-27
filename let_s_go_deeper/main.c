@@ -1,21 +1,17 @@
 #include <stdio.h>
-int square_root(int n);
+int is_palindrome(char *s);
 
 int main(void)
 {
   int r;
 
-  r = square_root(1);
+  r = is_palindrome("level");
   printf("%d\n", r);
-  r = square_root(1024);
+  r = is_palindrome("redder");
   printf("%d\n", r);
-  r = square_root(16);
+  r = is_palindrome("holberton");
   printf("%d\n", r);
-  r = square_root(17);
-  printf("%d\n", r);
-  r = square_root(25);
-  printf("%d\n", r);
-  r = square_root(-1);
+  r = is_palindrome("step on no pets");
   printf("%d\n", r);
   return (0);
 }

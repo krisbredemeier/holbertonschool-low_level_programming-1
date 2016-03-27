@@ -1,3 +1,6 @@
+/* square_root() passes an int to count_square()
+so that it may find its square root with an additional
+parameter */
 int count_square(int, int);
 
 int square_root(int n) {
