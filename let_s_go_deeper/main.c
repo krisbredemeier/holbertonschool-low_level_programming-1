@@ -1,17 +1,21 @@
 #include <stdio.h>
-int factorial(int n);
+int square_root(int n);
 
 int main(void)
 {
   int r;
 
-  r = factorial(0);
+  r = square_root(1);
   printf("%d\n", r);
-  r = factorial(-1);
+  r = square_root(1024);
   printf("%d\n", r);
-  r = factorial(-2);
+  r = square_root(16);
   printf("%d\n", r);
-  r = factorial(30);
+  r = square_root(17);
+  printf("%d\n", r);
+  r = square_root(25);
+  printf("%d\n", r);
+  r = square_root(-1);
   printf("%d\n", r);
   return (0);
 }
