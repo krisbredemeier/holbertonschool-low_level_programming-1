@@ -1,11 +1,11 @@
-#include "my_functions.h"
-
 /*
  *[print_number] TAKES AN INT, DIVIDES IT BY 10 AS MANY TIMES AS IT CAN TO
  *DETERMINE HOW MANY DIGITS IT CONTAINS, AND THEN CONVERTS EACH DIGIT TO A SINGLE
  *CHAR BY USING THE MODULUS OPERATOR AND ADDING THIS VALUE TO THE CHAR '0'. FINALLY
  *THIS CHAR IS PASSED TO THE [print_char] FUNCTION.
  */
+
+void print_char(char);
 
 void print_number(int n) {
   int i = 1;
