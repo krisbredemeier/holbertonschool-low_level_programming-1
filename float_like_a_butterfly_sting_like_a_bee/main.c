@@ -1,13 +1,31 @@
-#include <stdio.h>
 #include <stdlib.h>
-char *string_concat(char *, char *);
+#include <stdio.h>
 
-int main()
-{
-  char *concat;
+int **alloc_grid(int, int);
+void print_grid(int **, int, int);
 
-  concat = string_concat("Holberton ", "School");
-  printf("%s\n", concat);
-  free(concat);
+int main(void) {
+  int **grid;
+  
+  grid = alloc_grid(5, 5);
+  print_grid(grid, 5, 5);
+  printf("\n");
+  grid[2][3] = 98;
+  grid[4][4] = 402;
+  print_grid(grid, 5, 5);
   return (0);
+}
+
+void print_grid(int **dPtr, int x, int y) {
+  int ix, iy;
+
+  for (iy = 0; iy < y; iy++) {
+    for (ix = 0; ix < x; ix++) {
+      printf("%d", dPtr[iy][ix]);
+      if (ix < (x - 1)) {
+	printf(", ");
+      }
+    }
+    printf("\n");
+  }
 }
