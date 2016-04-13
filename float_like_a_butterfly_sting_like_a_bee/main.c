@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-char *string_dup(char *);
+char *string_concat(char *, char *);
 
 int main()
 {
-  char *s;
+  char *concat;
 
-  s = string_dup("Holberton");
-  printf("%s\n", s);
-  free(s);
+  concat = string_concat("Holberton ", "School");
+  printf("%s\n", concat);
+  free(concat);
   return (0);
 }
