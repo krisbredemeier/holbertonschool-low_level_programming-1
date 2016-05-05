@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
   int x, y, z;
   char c;
  
-  while (argc == 4) {
+  while (argc == 4 && argv[2][1] == '\0') {
     c = argv[2][0];
     while (c == '+' || c == '-' || c == '*' || c == '/' || c == '%') {
       x = atoi(argv[1]);
@@ -26,11 +26,11 @@ int main(int argc, char *argv[]) {
       
       print_number(z);
       print_char('\n');
-      return (1);
+      return (0);
     }
-    return (0);
+    return (1);
   }
-  return (0);
+  return (1);
 }
     
 int print_char(char c) {

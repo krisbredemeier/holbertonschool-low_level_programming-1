@@ -26,5 +26,9 @@ int main(void)
   printf("%d\n", r);
   r = shell_comp("main-main.c", "ma*in.c");
   printf("%d\n", r);
+  r = shell_comp("main", "main*d");
+  printf("%d\n", r);
+  r = shell_comp("iudfhisudfh", "**\0**\0");
+  printf("%d\n", r);
   return (0);
 }
