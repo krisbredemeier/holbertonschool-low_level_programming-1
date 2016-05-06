@@ -6,6 +6,8 @@ size into a struct.
  */
 struct String *string_to_struct(char *str) {
   int i;
+  char *strcpy;
+
   struct String *xxx;
 
   xxx = malloc(sizeof(struct String));
@@ -13,13 +15,24 @@ struct String *string_to_struct(char *str) {
     return NULL;
   }
 
-  xxx->str = str;
-
   i = 0;
   while(str[i] != '\0') {
     i++;
   }
   
+  strcpy = malloc(sizeof(char) * (i + 1));
+  if (strcpy == NULL) {
+    return NULL;
+  }
+
+  i = 0;
+  while(str[i] != '\0') {
+    strcpy[i] = str[i];
+    i++;
+  }
+  strcpy[i] = '\0';
+
+  xxx->str = strcpy;  
   xxx->length = i;
   
   return xxx;

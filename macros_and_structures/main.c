@@ -1,11 +1,13 @@
-#include <stdio.h>
-#include "0-abs.h"
+#include "param_struct.h"
 
-int main(void)
+struct Param *params_to_struct_array(int ac, char **av);
+void print_params_structs_array(struct Param *array);
+
+int main(int ac, char **av)
 {
-  int i;
+  struct Param *array;
 
-  i = -98;
-  printf("i=%d, abs(i)=%d\n", i, ABS(i));
-  return (0);
+  array = params_to_struct_array(ac, av);
+  print_params_structs_array(array);
+  return(0);
 }

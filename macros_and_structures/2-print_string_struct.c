@@ -50,8 +50,3 @@ void print_number(int n) {
     print_char(((temp % 10) * mod + '0'));
   }
 }
-
-int print_char(char c)
-{
-  return (write(1, &c, 1));
-}
