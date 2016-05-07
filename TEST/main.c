@@ -8,11 +8,16 @@ int main(void)
 {
   char **w;
 
-  w = string_to_words("Believing in negative thoughts is the single greatest obstruction to success.\n#cisfun!");
+  char xxx[] = "./okay now what";
 
-  if (w != NULL) {
+  w = string_to_words(xxx);
+
+  if (w == NULL) {
     printf("ok now?");
   }
+  
+  
+
   
   print_array_of_strings(w);
   return (0);
