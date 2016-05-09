@@ -1,8 +1,8 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
 DEPS = 
-OBJ = 
-NAME = 0-print_content
+OBJ = copy_content.c
+NAME = 1-copy_content
 
 %.o : %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<

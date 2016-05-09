@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
 DEPS = 
-OBJ = 
+OBJ = print_content.c
 NAME = 0-print_content
 
 %.o : %.c $(DEPS)
