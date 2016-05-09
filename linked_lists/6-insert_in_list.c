@@ -9,47 +9,32 @@ int add_node_end(List **, char *);
 /* insert_in_list creates a node, filled with given content, and inserts it
    into a given list at a given index number */
 int insert_in_list(List **list, char *content, int index) {
-  List *prev, *next, *new;
-  next = *list;
-
-  if (*list == NULL && index > 0) {
-    add_node_end(list, content);
-    return(0);
-  }
-
+  List *prev, *new, *next = *list;
   if (index >= list_size(*list)) {
     add_node_end(list, content);
     return (0);
   }
-
   if (index < 0) {
     return (1);
   }
-
   new = malloc(sizeof(List));
   if (new == NULL) {
     return (1);
   }
-
   if (index == 0) {
     *list = new;
     new->next = next;
     new->str = str_dup_1(content);
     return (0);
   }
-  
   while (index > 0 && next) {
     prev = next;
     next = next->next;
     index--;
   }
-
   new->next = next;
   new->str = str_dup_1(content);
-  if (prev) {
-    prev->next = new;
-  }
-
+  prev->next = new;
   return (0);
 }
 
