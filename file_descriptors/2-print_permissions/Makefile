@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic
 DEPS = 
-OBJ = 
-NAME = 0-print_content
+OBJ = print_permissions.c
+NAME = 2-print_permissions
 
 %.o : %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-all: $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $^

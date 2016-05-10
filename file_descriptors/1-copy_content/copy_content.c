@@ -1,6 +1,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+/* This function behaves similarly to cp in bash */
 int main(int ac, char **argv) {
   int fd_src, fd_dest;
   char c;

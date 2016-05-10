@@ -7,5 +7,5 @@ NAME = 0-print_content
 %.o : %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-all: $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $^

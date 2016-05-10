@@ -7,5 +7,5 @@ NAME = 1-copy_content
 %.o : %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-all: $(OBJ)
+$(NAME): $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $^
