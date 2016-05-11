@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 int main(int ac, char **argv) {
-  int fd;
+  int fd, i;
   char bf;
 
   if(ac == 1) {
@@ -12,16 +12,20 @@ int main(int ac, char **argv) {
     return(0);
   }
 
-  if (ac == 2) {
-    fd = open(argv[1], O_RDONLY);
-    while(read(fd, &bf, 1)) {
-      write(1, &bf, 1);
+  if (ac >= 2) {
+    i = 1;
+    while(i < ac) {
+      fd = open(argv[i], O_RDONLY);
+      while(read(fd, &bf, 1)) {
+	write(1, &bf, 1);
+      }
+      
+      if(close(fd)){
+	return (1);
+      }
+
+      i++;
     }
-    
-    if(close(fd)){
-      return (1);
-    }
-  
     return(0);
   }
   
