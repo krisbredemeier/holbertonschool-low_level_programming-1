@@ -1,23 +1,16 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <stdlib.h>
-
-#define PROMPT_SIZE 3
-#define BUFF_SIZE 5
-
-int read_line(void);
+#include "shell_head.h"
 
 int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv, __attribute__((unused)) char **env) {
   /* pid_t pid; */
   /* char *cmnd[] = {"/bin/echo", "Holberton", NULL}; */
   /* int status; */
+  int i;
+  char *str;
 
   while(1) {
-    if(read_line()) {
-      return (1);
-    }
+    str = read_line(0);
+    for(i = 0; str[i] != '\0'; i++) {}
+    write(1, str, i);
   }
   
   return(0);
