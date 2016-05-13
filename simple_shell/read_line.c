@@ -23,6 +23,7 @@ char *read_line(int fd) {
     }
 
     if (bf[i + size - 1] == '\n') {
+      bf[i + size - 1] = '\0';
       /*      for(i = 0; bf[i] != '\0'; i++) {}
 	      write(1, bf, i);*/
       
