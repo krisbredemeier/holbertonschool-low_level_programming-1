@@ -1,21 +1,5 @@
 #include "shell_head.h"
 
- /* int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv, char **env) { */
- /*  char *result; */
- /*  char *search; */
- /*  search = argv[1]; */
-  
- /*  if((result = search_and_rescue(search, env)) == NULL) { */
- /*    perror("search and rescue bad"); */
- /*    return (1); */
- /*  } */
-
- /*  printf("%s\n", result); */
-
- /*  return(0); */
- /*  } */
-
-/* search for variable within **env */
 char *search_and_rescue(char *search, char **env) {
   int i;
   char *check;
@@ -47,43 +31,59 @@ char *find_command(char *exec, char **env) {
   int i;
 
   path = search_and_rescue("PATH", env);
-  printf("%s\n", path);
   dir_arr = string_split(path, ':');
 
   for(i = 0; dir_arr[i] != NULL; i++) {
     dir_path = append_and_replace(exec, dir_arr[i]);
 
-    printf("1%s\n", dir_path);
-    fflush(stdout);
+    if ((stat(dir_path, &stat_strut)) == 0) {
+      free(exec);
+      return dir_path;
+    }
     free(dir_path);
-    
-    /* if ((stat(dir_path, &stat_strut)) == 0) { */
-    /*   return dir_path; */
-    /* } */
   }
 
-  free(dir_arr);
+  free_str_arr(dir_arr);
   return NULL;
 
 }
 
-char *append_and_replace(char *str, char *dir){
+char *append_and_replace(char *str, char *dir) {
   int i, i2, i3;
   char *new;
 
+  /* i is an index for the size of command */
   for (i = 0; str[i] != '\0'; i++) {}
+  /* i3 is an index for the size of directory */
   for (i3 = 0; dir[i3] != '\0'; i3++) {}
   
   new = malloc(sizeof(char) * (i3 + i + 2));
-  new[i + i3 + 1] = '\0';
   
+  /* i is reset to be the index for the new string */
   for (i = 0; dir[i] != '\0'; i++) {
     new[i] = dir[i];
   }
-  new[i++] = '/';
+  new[i] = '/';
+  i++;
+
+  /* i2 is now used as an index for the command string */
   for (i2 = 0; str[i2] != '\0'; i2++, i++) {
     new[i] = str[i2];
   }
-  free(str);
+
+  new[i] = '\0';
+  /* printf("\n\nadditional string length: %d\nold string length: %d\nnew string length: %d (additional + old + 2)\n\n", i3, i2, (i + 1));
+     fflush(stdout);*/
+
   return (new);
+}
+
+void free_str_arr(char **str_arr) {
+  int i;
+
+  for (i = 0; str_arr[i] != NULL; i++) {
+    free(str_arr[i]);
+  }
+  
+  free(str_arr);
 }

@@ -11,19 +11,21 @@ char **string_split(char *s, char seperator) {
   if (ss == NULL) {
     return NULL;
   }
-  ss[i] = NULL;
+
   i2 = 0;
   i3 = 0;
   while(i2 < i) {
     if (s[i3] != seperator && s[i3] != '\0') {
-      ss[i2] = malloc(sizeof(char) * (count_chars(s, seperator) + 1));
-      if (ss == NULL) {
+      /* allocate enough space for entire word */
+      ss[i2] = malloc(sizeof(char) * (count_chars(&(s[i3]), seperator) + 1));
+      if (ss[i2] == NULL) {
         return NULL;
       }
+
       t = ss[i2];
       while(s[i3] != seperator && s[i3] != '\0') {
-        *t++ = *s;
-	i3++;
+        *t++ = s[i3];
+ 	i3++;
       }
       *t = '\0';
       while(s[i3] == seperator && s[i3] != '\0') {
@@ -36,7 +38,7 @@ char **string_split(char *s, char seperator) {
     }
   }
 
-  free(s);
+  ss[i] = NULL;
   return ss;
 }
 

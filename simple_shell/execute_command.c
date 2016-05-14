@@ -3,6 +3,7 @@
 int execute_command(char **cmd, char **env) {
   pid_t pid;
   int status;
+  char *new;
 
   if((pid = fork()) == -1) {
     perror("bad fork");
@@ -10,52 +11,33 @@ int execute_command(char **cmd, char **env) {
   }
   if(pid == 0) {
     
-    if((cmd[0] = find_command(cmd[0], env)) == NULL) {
-      perror("Cannot find comand");
-      return (1);
+    if((new = find_command(cmd[0], env)) == NULL) {
+      perror("Cannot find command");
+      free_str_arr(cmd);
+      exit(EXIT_FAILURE);
     }
+
+    cmd[0] = new;
 
     if (execve(cmd[0], cmd, env) == -1) {
       perror("bad execve");
-      return (1);
+      free_str_arr(cmd);
+      exit(EXIT_FAILURE);
     }
-    return(0);
+    
+    exit(EXIT_SUCCESS);
   }
   else {
+    /* think about using waitpid() here instead */
     wait(&status);
-    if(status == 1) {
-      perror("bad exit");
-      return (1);
-    }
+
+    if(status == EXIT_FAILURE) {
+      return(status);
+    }   
     else {
       return(0);
     }
   }
   
-  return 0;
+  return (0);
 }
- 
-
-
-/* void print_array_of_strings(char **a) { */
-/*   if (*a == NULL) { */
-/*     printf("\n"); */
-/*   } */
-/*   else { */
-/*     print_string(*a); */
-/*     printf(" "); */
-/*     a++; */
-/*     print_array_of_strings(a); */
-/*   } */
-/* } */
-
-/* void print_string(char *s) { */
-/*   if (*s == '\0') { */
-/*     return; */
-/*   } */
-/*   else { */
-/*     printf("%c", *s); */
-/*     s++; */
-/*     print_string(s); */
-/*   } */
-/* } */
