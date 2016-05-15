@@ -5,6 +5,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <signal.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -23,4 +24,17 @@ char *search_and_rescue(char *, char **);
 char *find_command(char *, char **);
 void free_str_arr(char **);
 
-int is_exit(char *);
+void sig_handle_ctl_c(int);
+
+int string_compare(char *, char *);
+int check_builtins(char **);
+
+/* helper functions */
+int print_char(char);
+void print_string(char *);
+int char_is_char(char);
+int char_is_num(char);
+void cut_string(char*, int, char*);
+int make_number(char*, int, int);
+int expon(int);
+int string_to_integer(char *);

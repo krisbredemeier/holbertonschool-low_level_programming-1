@@ -1,7 +1,7 @@
 #include "shell_head.h"
 
 int execute_command(char **cmd, char **env) {
-  pid_t pid;
+  pid_t pid, child_exit;
   int status;
   char *new;
 
@@ -28,16 +28,28 @@ int execute_command(char **cmd, char **env) {
     exit(EXIT_SUCCESS);
   }
   else {
-    /* think about using waitpid() here instead */
-    wait(&status);
-
-    if(status == EXIT_FAILURE) {
-      return(status);
-    }   
-    else {
-      return(0);
-    }
+    do {
+      child_exit = waitpid(pid, &status, WUNTRACED);
+      if (child_exit == -1) {
+	perror("bad waitpid");
+	exit(EXIT_FAILURE);
+      }
+    } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+    
+    return(EXIT_SUCCESS);
   }
-  
-  return (0);
 }
+ 
+
+/*    wait(&status); */
+
+/*     if(status == EXIT_FAILURE) { */
+/*       return(status); */
+/*     }    */
+/*     else { */
+/*       return(0); */
+/*     } */
+/*   } */
+  
+/*   return (0); */
+/* } */

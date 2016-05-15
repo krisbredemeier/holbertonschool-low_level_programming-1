@@ -1,39 +1,37 @@
 #include "shell_head.h"
 
 int main(__attribute__((unused)) int ac, __attribute__((unused)) char **argv, char **env) {
-  char **str;
+  char **cmd;
   char *input;
   int error;
 
+  signal(SIGINT, sig_handle_ctl_c);
+
   while(TRUE) {
     input = read_line(0);
-    str = string_split(input, ' ');
+    cmd = string_split(input, ' ');
     free(input);
 
-    if (is_exit(str[0]) == 0) {
-      free_str_arr(str);
-      break;
-    }
+    if((error = check_builtins(cmd)) != -1) {
+      free_str_arr(cmd);
+      continue;
+    } 
 
-    if((error = execute_command(str, env)) == EXIT_FAILURE) {
+    if((error = execute_command(cmd, env)) == EXIT_FAILURE) {
       exit(error);
     }
-    free_str_arr(str);
+    free_str_arr(cmd);
   }
   
   exit(0);
 
 }
 
-int is_exit(char *check) {
-  char exit[] = "exit";
-  int i;
+void sig_handle_ctl_c(int sign) {
+  char prompt[] = ">>> ";
 
-  for (i = 0; i < 5; i++) {
-    if (check[i] != exit[i]) {
-      return (1);
-    }
-  }
-
-  return (0);
+  signal(sign, SIG_IGN);
+  write(1 ,"\nPlease type 'exit' to quit.\n", 29);
+  write(1, prompt, 4);
+  signal(SIGINT, sig_handle_ctl_c);
 }

@@ -1,13 +1,13 @@
 #include "shell_head.h"
 
-#define PROMPT_SIZE 3
+#define PROMPT_SIZE 4
 #define BUFF_SIZE 5
 
 char *read_line(int fd) {
   char *bf, *temp;
   int size, i;
  
-  char prompt[] = ">>>";
+  char prompt[] = ">>> ";
   write(1, prompt, PROMPT_SIZE);
 
   bf = malloc(sizeof(char) * (BUFF_SIZE));
