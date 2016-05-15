@@ -6,12 +6,12 @@
 char *read_line(int fd) {
   char *bf, *temp;
   int size, i;
- 
+
   char prompt[] = ">>> ";
   write(1, prompt, PROMPT_SIZE);
 
   bf = malloc(sizeof(char) * (BUFF_SIZE));
- 
+
   i = 0;
   while (1) {
     size = read(fd, &(bf[i]), BUFF_SIZE);
@@ -23,26 +23,27 @@ char *read_line(int fd) {
 
     if (bf[i + size - 1] == '\n') {
       bf[i + size - 1] = '\0';
-      
+
       return (bf);
     }
 
     i += size;
     temp = malloc(sizeof(char) * (i));
     copy_string(bf, temp, i);
-    
+
     free(bf);
     bf = malloc(sizeof(char) * (i + BUFF_SIZE + 1));
-    copy_string(temp, bf, i); 
+    copy_string(temp, bf, i);
     free(temp);
   }
-  
+
 }
 
+/*this function copies a string by looping through each element pointed to by source
+and copies it to a pointer destiantion.*/
 void copy_string(char *source, char *dest, int n) {
   int i;
   for (i = 0; i < n; i++){
     dest[i] = source[i];
   }
 }
-
