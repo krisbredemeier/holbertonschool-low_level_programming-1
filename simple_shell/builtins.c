@@ -1,6 +1,7 @@
 #include "shell_head.h"
 #include "shell_builtins.h"
 
+/*creates a built-in exit command*/
 int builtin_exit(char **cmd) {
   int i;
   char *check;
@@ -23,9 +24,11 @@ int builtin_exit(char **cmd) {
 
   i = string_to_integer(cmd[1]);
   free_str_arr(cmd);
-  exit(i);  
+  exit(i);
 }
 
+/*creates a built-in help command - command exhists,
+but currenlty only returns a string*/
 int builtin_help(char **cmd) {
   print_string("***Still under construction***\n");
   if(cmd[1] != NULL) {
@@ -34,6 +37,8 @@ int builtin_help(char **cmd) {
   return (0);
 }
 
+/*creates a built-in environment command - command exhists,
+but currenlty only returns a string*/
 int builtin_env(char **cmd) {
   print_string("***Still under construction***\n");
   if(cmd[1] != NULL) {
@@ -42,6 +47,8 @@ int builtin_env(char **cmd) {
   return (0);
 }
 
+/*creates a built-in change directory command - command exhists,
+but currenlty only returns a string*/
 int builtin_cd(char **cmd) {
   print_string("***Still under construction***\n");
   if(cmd[1] != NULL) {
